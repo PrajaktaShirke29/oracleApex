@@ -11,7 +11,7 @@ Below you will find some information on how to perform tasks.<br>
 - [Create UI for the project convert text to speech](#create-ui-for-the-project-convert-text-to-speech)
 - [Apply javascript to convert text into speech](#apply-javascript-to-convert-text-to-speech)
 - [Conclusion](#conclusion)
-
+- [Point To Note](#point-to-note)
 
 ## Demo Application
 Demo of [Text To Speech](#https://apex.oracle.com/pls/apex/f?p=49473:LOGIN_DESKTOP:15816013180148) will give you the basic idea of the application.
@@ -51,8 +51,10 @@ For this you need to navigate to home page i.e Page 1, then navigate to breadcru
 Edit region: Source will be
 
 `
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<div class="container">
+<div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <div class="container">
     <div class="row">
         <nav>
             <div class="nav-wrapper">
@@ -94,17 +96,19 @@ Edit region: Source will be
         </div>
         <a href="#" id="speak" class="waves-effect waves-light btn">Speak</a>
     </form>
-</div>
-<div id="modal1" class="modal">
-    <h4>Speech Synthesis not supported.</h4>
-    <p>Your browser does not support speech sunthesis.</p>
-    <p>We recommend you use Google chrome.</p>
-    <div class="action-bar">
-        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"> Close</a>
     </div>
+    <div id="modal1" class="modal">
+        <h4>Speech Synthesis not supported.</h4>
+        <p>Your browser does not support speech sunthesis.</p>
+        <p>We recommend you use Google chrome.</p>
+        <div class="action-bar">
+            <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"> Close</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 `
 
 Then in apperance: Template must be select.
@@ -116,7 +120,10 @@ For this you need to navigate to home page i.e Page 1, select home in the layout
 
 Edit the page: javascript -> Function and Global Variable Declaration as
 
-`$(function(){
+`
+<div>
+
+    $(function(){
     if('speechSynthesis' in window){
         speechSynthesis.onvoiceschanged = function() {
             var $voicelist = $('#voices');
@@ -142,15 +149,18 @@ Edit the page: javascript -> Function and Global Variable Declaration as
                 console.log('Finished in '+event.elapsedTime+ ' seconds.');
             };
             speechSynthesis.speak(msg);
-        })
-        $('#modal1').openModal();
-    }
-})`
+            })
+            $('#modal1').openModal();
+        }
+    })
+</div>`
 
 This will make your application running on apex oracle.
 
 ## Conclusion
 
 This application will give you the basic information of how to create the oracle application with the javascript and UI in dynamic way.
+
+## Point To Note
 
 This application has limit to the converter where crome can convert only 44 words, [etc](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
