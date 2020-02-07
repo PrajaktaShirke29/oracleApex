@@ -49,7 +49,9 @@ This will create your application.
 For this you need to navigate to home page i.e Page 1, then navigate to breadcrumb bar.
 
 Edit region: Source will be
-`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+`
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <div class="container">
     <div class="row">
         <nav>
@@ -102,7 +104,8 @@ Edit region: Source will be
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>`
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+`
 
 Then in apperance: Template must be select.
 Then run the application you will be able to see the UI. You can modify the you as per your request.
@@ -122,7 +125,6 @@ Edit the page: javascript -> Function and Global Variable Declaration as
                     var $option = $('<option>')
                     .val(index)
                     .html(voice.name + (voice.default ? ' (default)': ''));
-                    
                     $voicelist.append($option);
                 });
                 $voicelist.material_select();
