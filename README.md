@@ -50,7 +50,6 @@ For this you need to navigate to home page i.e Page 1, then navigate to breadcru
 
 Edit region: Source will be
 `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
 <div class="container">
     <div class="row">
         <nav>
@@ -113,7 +112,8 @@ Then run the application you will be able to see the UI. You can modify the you 
 For this you need to navigate to home page i.e Page 1, select home in the layout.
 
 Edit the page: javascript -> Function and Global Variable Declaration as
-$(function(){
+
+`$(function(){
     if('speechSynthesis' in window){
         speechSynthesis.onvoiceschanged = function() {
             var $voicelist = $('#voices');
@@ -143,7 +143,7 @@ $(function(){
         })
         $('#modal1').openModal();
     }
-})
+})`
 
 This will make your application running on apex oracle.
 
