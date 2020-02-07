@@ -61,7 +61,6 @@ Edit region: Source will be
             </div>
         </nav>
     </div>
-
     <form class = "col s8 offset-s2">
         <div class="row">
             <label>Choose voice</label>
@@ -74,7 +73,6 @@ Edit region: Source will be
                 <input type="range" id="rate" min="1" max="100" value="10" />
             </p>
         </div>
-   
         <div class="col s6">
             <label> Pitch</label>
             <p class="range-field">
@@ -87,7 +85,6 @@ Edit region: Source will be
                 N.B Rate and Pitch only work with native voice.
             </p>
         </div>
-   
         <div class="row">
             <div class="input-field col s12">
                 <textarea id="message" class="materialize-textarea"></textarea>
@@ -97,7 +94,6 @@ Edit region: Source will be
         <a href="#" id="speak" class="waves-effect waves-light btn">Speak</a>
     </form>
 </div>
-
 <div id="modal1" class="modal">
     <h4>Speech Synthesis not supported.</h4>
     <p>Your browser does not support speech sunthesis.</p>
@@ -106,7 +102,6 @@ Edit region: Source will be
         <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"> Close</a>
     </div>
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>`
 
@@ -118,12 +113,10 @@ Then run the application you will be able to see the UI. You can modify the you 
 For this you need to navigate to home page i.e Page 1, select home in the layout.
 
 Edit the page: javascript -> Function and Global Variable Declaration as
-
-`$(function(){
+$(function(){
     if('speechSynthesis' in window){
         speechSynthesis.onvoiceschanged = function() {
             var $voicelist = $('#voices');
-            
             if($voicelist.find('option').length == 0){
                 speechSynthesis.getVoices().forEach(function(voice, index){
                     var $option = $('<option>')
@@ -132,31 +125,25 @@ Edit the page: javascript -> Function and Global Variable Declaration as
                     
                     $voicelist.append($option);
                 });
-                
                 $voicelist.material_select();
             }
         }
-        
         $('#speak').click(function(){
             var text = $('#message').val();
             var msg = new SpeechSynthesisUtterance();
             var voices = window.speechSynthesis.getVoices();
-            
             msg.voice= voices[$('#voices').val];
             msg.rate = $('#rate').val() / 10;
             msg.pitch = $('#pitch').val();
             msg.text = text;
-            
             msg.onend = function(e){
                 console.log('Finished in '+event.elapsedTime+ ' seconds.');
             };
-            
             speechSynthesis.speak(msg);
         })
-        
         $('#modal1').openModal();
     }
-})`
+})
 
 This will make your application running on apex oracle.
 
@@ -164,3 +151,4 @@ This will make your application running on apex oracle.
 
 This application will give you the basic information of how to create the oracle application with the javascript and UI in dynamic way.
 
+This application has limit to the converter where crome can convert only 44 words, [etc](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
